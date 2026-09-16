@@ -2,8 +2,8 @@
 
 Predicting and explaining employee attrition with machine learning.
 
-**Group 8 — Final Group Project, MSc Big Data Analytics, Adventist University of Central Africa (AUCA)**
-September 2026
+**Group 8: Final Group Project, MSc Big Data Analytics, Adventist University of Central Africa (AUCA)**
+16 September 2026
 
 ---
 
@@ -197,7 +197,7 @@ Crucially: SHAP explains **what the model did**, not what causes attrition. "Ove
 ### To run it:
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn shap jupyter
+pip install -r requirements.txt  
 jupyter notebook group08-flight-risk.ipynb
 ```
 
@@ -220,4 +220,4 @@ Group 8, supervised by **Dr. Lema LOGAMOU SEKNEWNA**.
 
 ## 11. One-paragraph summary
 
-We analysed 1,470 employee records to understand attrition. Clustering — done without ever showing the algorithm who left — split the workforce into an early-tenure group (65% of staff, 18.8% attrition) and an experienced long-tenure group (35%, 11.1% attrition). Of three classifiers, an SVM performed best on F1 (0.519), catching about 60% of leavers at roughly 46% precision. SHAP showed overtime, stock options, age, environment satisfaction and total working years mattered most to the model's predictions, and produced a readable explanation for each individual employee. The model is useful as an early-warning signal for HR, and unfit to be the sole basis for any decision about a person.
+We analysed 1,470 employee records to understand attrition. Clustering: done without ever showing the algorithm who left, split the workforce into an early-tenure group (65% of staff, 18.8% attrition) and an experienced long-tenure group (35%, 11.1% attrition). Of three classifiers, an SVM performed best on F1 (0.519), catching about 60% of leavers at roughly 46% precision. SHAP showed overtime, stock options, age, environment satisfaction and total working years mattered most to the model's predictions, and produced a readable explanation for each individual employee. The model is useful as an early-warning signal for HR, and unfit to be the sole basis for any decision about a person.
