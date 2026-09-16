@@ -21,15 +21,29 @@
 \definecolor{midgray}{RGB}{90,90,90}
 
 % ---------- Section styling ----------
-\titleformat{\section}{\normalfont\Large\bfseries\color{darkblue}}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries\color{darkblue}}{\thesubsection}{0.5em}{}
-\titleformat{\subsubsection}{\normalfont\normalsize\bfseries\color{midgray}}{\thesubsubsection}{0.5em}{}
+% ---------- Section styling ----------
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{darkblue}}
+  {\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{darkblue}}
+  {\thesubsection}{0.5em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{midgray}}
+  {\thesubsubsection}{0.5em}{}
+
+% Reduce spacing before and after headings
+\titlespacing*{\section}{0pt}{1.2ex plus .3ex minus .2ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex minus .2ex}{0.4ex}
+\titlespacing*{\subsubsection}{0pt}{0.7ex plus .2ex minus .1ex}{0.3ex}
 
 % ---------- Header / Footer ----------
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[L]{\small Group 8 --- Employee Attrition Report}
+\fancyhead[L]{\small Group 8: Employee Attrition Report}
 \fancyhead[R]{\small \thepage}
 \fancyfoot[C]{\small People Analytics: Who's a Flight Risk?}
 
@@ -62,7 +76,7 @@
     \centering
     \vspace*{0.5cm}
 
-    \includegraphics[width=3.2cm]{figures/auca_logo.png}\\[0.6cm]
+    \includegraphics[width=3.2cm]{../figures/auca_logo.png}\\[0.6cm]
 
     {\Large \bfseries \color{darkblue} ADVENTIST UNIVERSITY OF CENTRAL AFRICA}\\[0.2cm]
     {\large (AUCA)}\\[0.2cm]
@@ -199,7 +213,7 @@ For supervised modelling, preprocessing was incorporated into machine-learning p
 
 The target distribution demonstrates substantial class imbalance: 83.88\% of employees stayed and 16.12\% of employees left. This finding influenced the supervised-learning methodology. Accuracy alone could be misleading because a model could achieve relatively high accuracy by mostly predicting the majority class.
 
-\resultfigure{figures/fig_attrition_dist.png}{0.6}{Employee attrition distribution (Stayed vs.\ Left).}
+\resultfigure{../figures/fig_attrition_dist.png}{0.6}{Employee attrition distribution (Stayed vs.\ Left).}
 
 \subsection{Relationship with Employee Characteristics}
 
@@ -209,7 +223,7 @@ The correlation analysis identified \texttt{OverTime} as the strongest positive 
 
 These findings provided useful direction for later modelling and interpretation, while correlation was treated as an association rather than evidence of causation.
 
-\resultfigure{figures/fig_correlation_heatmap.png}{0.85}{Correlation heatmap of the top features most associated with attrition.}
+\resultfigure{../figures/fig_correlation_heatmap.png}{0.85}{Correlation heatmap of the top features most associated with attrition.}
 
 
 % ===================== SECTION 5 =====================
@@ -241,8 +255,8 @@ These component interpretations describe associations in the reduced feature spa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{figures/fig_pca_variance.png}
-    \includegraphics[width=0.48\textwidth]{figures/fig_pca_cumulative.png}
+    \includegraphics[width=0.48\textwidth]{../figures/fig_pca_variance.png}
+    \includegraphics[width=0.48\textwidth]{../figures/fig_pca_cumulative.png}
     \caption{PCA explained variance by component (left) and cumulative explained variance (right).}
 \end{figure}
 
@@ -261,8 +275,8 @@ The relatively low silhouette score also means the personas should be viewed as 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{figures/fig_elbow.png}
-    \includegraphics[width=0.48\textwidth]{figures/fig_silhouette.png}
+    \includegraphics[width=0.48\textwidth]{../figures/fig_elbow.png}
+    \includegraphics[width=0.48\textwidth]{../figures/fig_silhouette.png}
     \caption{Elbow method (left) and silhouette score (right) across candidate values of $K$.}
 \end{figure}
 
@@ -312,7 +326,7 @@ This group has substantially longer organisational and professional tenure.
 
 The clustering results indicate that tenure and professional experience are the main characteristics distinguishing the two personas, while satisfaction and engagement measures are relatively similar across the groups.
 
-\resultfigure{figures/fig_clusters_pca.png}{0.6}{Final K-Means clusters visualised on the first two PCA components.}
+\resultfigure{../figures/fig_clusters_pca.png}{0.6}{Final K-Means clusters visualised on the first two PCA components.}
 
 \subsection{Personas and Attrition}
 
@@ -374,13 +388,13 @@ The results show why accuracy alone is insufficient. Random Forest has slightly 
 
 Logistic Regression has the highest PR-AUC and recall, but SVM has the highest F1-score.
 
-\resultfigure{figures/fig_model_comparison.png}{0.7}{Comparison of precision, recall, F1-score and PR-AUC across the three candidate models.}
+\resultfigure{../figures/fig_model_comparison.png}{0.7}{Comparison of precision, recall, F1-score and PR-AUC across the three candidate models.}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.32\textwidth]{figures/fig_cm_logreg.png}
-    \includegraphics[width=0.32\textwidth]{figures/fig_cm_svm.png}
-    \includegraphics[width=0.32\textwidth]{figures/fig_cm_rf.png}
+    \includegraphics[width=0.32\textwidth]{../figures/fig_cm_logreg.png}
+    \includegraphics[width=0.32\textwidth]{../figures/fig_cm_svm.png}
+    \includegraphics[width=0.32\textwidth]{../figures/fig_cm_rf.png}
     \caption{Confusion matrices on the held-out test set: Logistic Regression (left), SVM (centre), Random Forest (right).}
 \end{figure}
 
@@ -441,7 +455,7 @@ The SHAP analysis aggregated encoded categorical variables back to their origina
 \caption{Top ten features by global SHAP importance}
 \end{table}
 
-\resultfigure{figures/fig_shap_global.png}{0.75}{Global SHAP feature importance for the final SVM model.}
+\resultfigure{../figures/fig_shap_global.png}{0.75}{Global SHAP feature importance for the final SVM model.}
 
 The strongest overall feature was \texttt{OverTime}, meaning it had the largest average absolute contribution to the SVM's predictions in the SHAP analysis.
 
@@ -492,7 +506,7 @@ MonthlyIncome & 2174 & Increases flight-risk prediction \\
 \end{table}
 
 
-\resultfigure{figures/fig_shap_waterfall.png}{0.85}{SHAP waterfall plot for Employee 357.}
+\resultfigure{../figures/fig_shap_waterfall.png}{0.85}{SHAP waterfall plot for Employee 357.}
 
 The waterfall plot illustrates how the feature contributions moved the model's prediction toward the final 93.1\% probability of leaving.
 
@@ -547,24 +561,6 @@ Overall, the analysis demonstrates the potential of machine learning to provide 
 
 OpenAI. \textit{ChatGPT}. Used as an AI-assisted learning and support tool to explain machine learning concepts, clarify course activities, interpret errors, explain code, and provide guidance during the development and interpretation of the project. The final analysis, implementation, results, and conclusions were reviewed and adapted by the project team.
 
-% ===================== TEAM MEMBERS =====================
-\section*{Team Members}
-\addcontentsline{toc}{section}{Team Members}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{cll}
-\toprule
-\textbf{\#} & \textbf{Student ID} & \textbf{Full Name} \\
-\midrule
-1 & 20251MBI007 & Shimwa Uwase Sylvie \\
-2 & 20251MBI017 & Ishimwe Divin Claudel \\
-3 & 20251MBI029 & Mpayimana Iradukunda Robert \\
-4 & 20251MBI050 & Hirwa Fabrice \\
-\bottomrule
-\end{tabular}
-\caption{Group 8 team members}
-\end{table}
 
 % ===================== TEAM CONTRIBUTIONS =====================
 \section*{Team Contributions}
@@ -588,9 +584,9 @@ Hirwa Fabrice (Rugera) & Story \& Interpretation Lead --- SHAP, report, slides \
 \caption{Group 8 contributions by member}
 \end{table}
 
-\vspace{1cm}
 \begin{center}
-\textit{Group 8 --- Employee Attrition Report}
+    \vspace{1cm}
+    \textbf{Thank You}
 \end{center}
 
 \end{document}
